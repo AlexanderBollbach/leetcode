@@ -1,5 +1,3 @@
-
-
 allQs = [
 ("leetcode", ["leet", "code"], True, 'a'),
 ('ababab', ["aba", "ba"], False, 'b'),
@@ -9,19 +7,11 @@ allQs = [
 ("aaaaa", ["a"], True, 'f'),
 ("acaaaaabbbdbcccdcdaadcdccacbcccabbbbcdaaaaaadb", ["abbcbda","cbdaaa","b","dadaaad","dccbbbc","dccadd","ccbdbc","bbca","bacbcdd","a","bacb","cbc","adc","c","cbdbcad","cdbab","db","abbcdbd","bcb","bbdab","aa","bcadb","bacbcb","ca","dbdabdb","ccd","acbb","bdc","acbccd","d","cccdcda","dcbd","cbccacd","ac","cca","aaddc","dccac","ccdc","bbbbcda","ba","adbcadb","dca","abd","bdbb","ddadbad","badb","ab","aaaaa","acba","abbb"], True, 'g'),
 ("abcd", ["a","abc","b","cd"], True, 'h'),
-("cars", ["car","ca","rs"], True, 'i')
+("cars", ["car","ca","rs"], True, 'i'),
+("aaaab", ["a","aa","aaa", "b"], True, 'j'),
+("aaaaaaa", ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"], True, 'k'),
+("abcd", ["a","abc","b","cd"], True, 'l')
 ]
-
-# h = ('abba', ["ab", "a"])
-# i = ("aaaaaaaab",
-# ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"])
-# j = ("aaaab", ["a","aa","aaa", "b"])
-# k = ("cars", ["car","ca","rs"])
-# l = ("abcd", ["a","abc","b","cd"])
-
-# m_r = False #????
-
-# allQs = []
 
 current = None
 
@@ -53,15 +43,14 @@ class Solution(object):
 		def wordBreak(self, s, wordDict):
 			memo = {'': True}
 			run(s, wordDict, memo)
-			print(memo)
-			print('runcount', runcount)
-			print('memocount', memocount)
+			# print(memo)
+			# print('runcount', runcount)
+			# print('memocount', memocount)
 			return s in memo and memo[s]
 
 
 for val in allQs:
-	r = Solution().wordBreak(val[0], val[1])
-	if r != val[2]:
+	if Solution().wordBreak(val[0], val[1]) != val[2]:
 		raise Exception('problem with', val[3])
 
 if current:
