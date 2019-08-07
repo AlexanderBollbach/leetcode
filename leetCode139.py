@@ -33,10 +33,15 @@ def run(s, words, memo):
 		if s.find(word, 0) == 0:
 			s2 = s.replace(word, '', 1)
 			run(s2, words, memo)
-			if s not in memo:
+			# if s2 in memo and memo[s2]:
+			if s not in memo or not memo[s]:
 				memo[s] = memo[s2]
+			# if s not in memo or:
+				# print('set memo s', s, s2)
+				# memo[s] = memo[s2]
 
 	if s not in memo:
+		# print('false memo', s)
 		memo[s] = False
 
 class Solution(object):
@@ -50,7 +55,9 @@ class Solution(object):
 
 
 for val in allQs:
-	if Solution().wordBreak(val[0], val[1]) != val[2]:
+	sol = Solution().wordBreak(val[0], val[1])
+	print('running test: {} and got {}'.format(val[3], sol))
+	if sol != val[2]:
 		raise Exception('problem with', val[3])
 
 if current:
