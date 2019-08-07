@@ -15,42 +15,22 @@ allQs = [
 
 current = None
 
-runcount = 0
-memocount = 0
-
 def run(s, words, memo):
-
-	global runcount
-	global memocount
-
 	if s in memo:
-		memocount += 1
 		return
-	
 	for word in words:
-		runcount += 1
-		# print('=== s: {} | word: {} | memo: {}'.format(s, word, memo))
 		if s.find(word, 0) == 0:
 			s2 = s.replace(word, '', 1)
 			run(s2, words, memo)
-			# if s2 in memo and memo[s2]:
 			if s not in memo or not memo[s]:
 				memo[s] = memo[s2]
-			# if s not in memo or:
-				# print('set memo s', s, s2)
-				# memo[s] = memo[s2]
-
 	if s not in memo:
-		# print('false memo', s)
 		memo[s] = False
 
 class Solution(object):
 		def wordBreak(self, s, wordDict):
 			memo = {'': True}
 			run(s, wordDict, memo)
-			# print(memo)
-			# print('runcount', runcount)
-			# print('memocount', memocount)
 			return s in memo and memo[s]
 
 
