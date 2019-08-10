@@ -26,8 +26,14 @@ def findACycleNode(head):
     fast = fast.next.next
 
 def run(head):
+
+  if not head or not head.next:
+    return False 
+
+  # find any node in the cycle
   cycle_node = findACycleNode(head)
     
+  # iteratively find the first in the list in that cycle
   temp = head
   while temp and temp.next:
     if cycle_and_find(cycle_node, temp):
